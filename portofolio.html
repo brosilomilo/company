@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - [Nama Anda]</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f4f7fa;
+    }
+
+    /* Header */
+    header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #007bff;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: #333;
+        transition: color 0.3s;
+        font-weight: 500;
+    }
+
+    nav ul li a:hover {
+        color: #007bff;
+    }
+
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        z-index: 200;
+    }
+
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: #333;
+        margin: 3px 0;
+        transition: 0.3s;
+    }
+
+    /* Hero */
+    #home {
+        background: linear-gradient(135deg, rgba(27, 34, 61, 0.6), rgba(224, 219, 148, 0.6)),
+            url('https://images.unsplash.com/photo-1558655146-d09347e92766?w=1200&h=800&fit=crop') no-repeat center top;
+        background-size: cover;
+        background-attachment: fixed; /* Opsional, untuk efek parallax, tapi bisa dihapus jika ingin lebih ringan */
+        color: white;
+        padding: 140px 2rem 60px;
+        text-align: center;
+        display: flex;
+        align-items: flex-start;
+        min-height: 100vh;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .values {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 2rem 0;
+        flex-wrap: wrap;
+    }
+
+    .value-item {
+        text-align: center;
+        flex: 1;
+        min-width: 150px;
+    }
+
+    .value-item i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .cta-button {
+        display: inline-block;
+        background: #007bff;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: transform 0.3s;
+        font-size: 1rem;
+    }
+
+    .cta-button:hover {
+        transform: scale(1.05);
+    }
+
+    /* About */
+    #about {
+        background-color: #f4f7fa;
+        margin-top: 2rem;
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .about-content {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .about-img {
+        width: 40%;
+        max-width: 400px;
+        border-radius: 10px;
+    }
+
+    .about-text {
+        width: 55%;
+    }
+
+    .about-text h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .about-text p {
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        text-align: justify;
+    }
+
+    /* Portfolio */
+    #portfolio {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    #portfolio h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .portfolio-item {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    .portfolio-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .portfolio-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .portfolio-item h3 {
+        padding: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .portfolio-item p {
+        padding: 0 1rem 1rem;
+        color: #666;
+    }
+
+    /* Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 200;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        overflow-y: auto;
+    }
+
+    .modal-content {
+        background: white;
+        margin: 10% auto;
+        padding: 2rem;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 600px;
+        position: relative;
+    }
+
+    .close {
+        float: right;
+        font-size: 2rem;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+    }
+
+    /* Contact */
+    #contact {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #contact h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    #contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    input,
+    textarea {
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    button[type="submit"] {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 0.75rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+        font-size: 1rem;
+    }
+
+    button[type="submit"]:hover {
+        background: #0056b3;
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+
+    .contact-info p {
+        margin: 0.5rem 0;
+        font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    /* Media Queries */
+    /* Tablet */
+    @media (max-width: 1024px) {
+        nav {
+            padding: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            gap: 1.5rem;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+        }
+
+        .values {
+            gap: 1.5rem;
+        }
+
+        .about-content {
+            gap: 1.5rem;
+        }
+
+        .about-img {
+            width: 45%;
+        }
+
+        .about-text {
+            width: 50%;
+        }
+
+        .portfolio-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        #home {
+            background-image: linear-gradient(135deg, rgba(27, 34, 61, 0.6), rgba(224, 219, 148, 0.6)),
+                url('https://images.unsplash.com/photo-1558655146-d09347e92766?w=1000&h=600&fit=crop');
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+        nav ul {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 1rem 0;
+        }
+
+        nav ul.active {
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            padding: 0.75rem 1rem;
+        }
+
+        .hamburger {
+            display: flex;
+        }
+
+        #home {
+            padding: 120px 1rem 40px;
+            background-image: linear-gradient(135deg, rgba(27, 34, 61, 0.6), rgba(224, 219, 148, 0.6)),
+                url('https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=500&fit=crop');
+            background-attachment: scroll; /* Hapus fixed untuk performa mobile */
+        }
+
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+        }
+
+        .values {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .value-item {
+            min-width: unset;
+        }
+
+        .cta-button {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .about-content {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .about-img {
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text {
+            width: 100%;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+        }
+
+        .portfolio-grid {
+            grid-template-columns: 1fr;
+        }
+
+        #contact-form {
+            padding: 0 1rem;
+        }
+
+        .modal-content {
+            width: 95%;
+            margin: 20% auto;
+            padding: 1.5rem;
+        }
+    }
+
+    /* Small Mobile */
+    @media (max-width: 480px) {
+        nav {
+            padding: 0.75rem 1rem;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+        }
+
+        #home {
+            padding: 100px 1rem 30px;
+            background-image: linear-gradient(135deg, rgba(27, 34, 61, 0.6), rgba(224, 219, 148, 0.6)),
+                url('https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&h=400&fit=crop');
+        }
+
+        .hero-content h1 {
+            font-size: 1.8rem;
+        }
+
+        .hero-content p {
+            font-size: 0.9rem;
+        }
+
+        .about-text h2 {
+            font-size: 1.8rem;
+        }
+
+        #portfolio h2,
+        #contact h2 {
+            font-size: 2rem;
+        }
+
+        .portfolio-item h3 {
+            font-size: 1.1rem;
+        }
+
+        .contact-info p {
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Brosilomilo's Portofolio</div>
+            <ul>
+                <li><a href="#home">Utama</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#portfolio">Portofolio</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="hero-content">
+            <h1>Hai, Saya [Panji Arya Baskhara]</h1>
+            <p>[Desainer Kreatif yang Fokus pada Inovasi & Solusi]</p>
+            <div class="values">
+                <div class="value-item"><i class="fas fa-lightbulb"></i> Inovasi</div>
+                <div class="value-item"><i class="fas fa-users"></i> Kolaborasi</div>
+                <div class="value-item"><i class="fas fa-trophy"></i> Kualitas</div>
+            </div>
+            <a href="#contact" class="cta-button">Hubungi Saya</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="about-content">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop"
+                alt="Latar Belakang" class="about-img">
+
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>Saya adalah seorang Web Developer dan Designer yang berfokus pada pembuatan website yang fungsional, menarik, dan sesuai kebutuhan pengguna.</p>
+                <p>Saya membantu personal brand maupun bisnis membangun identitas digital melalui website yang rapi, responsif, dan mudah digunakan.</p>
+                <p>Bagi saya, website bukan hanya soal tampilan visual, tetapi bagaimana sebuah website mampu memberikan nilai dan hasil nyata.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2>Portofolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item" onclick="openModal('modal1')">
+                <img src="https://i.pinimg.com/1200x/67/c6/1e/67c61e4c2af008a9a3db521384d641e6.jpg"
+                    alt="Proyek 1">
+                <h3>Proyek 1: "Hanya Contoh"</h3>
+                <p>Portofolio anda</p>
+            </div>
+            <div class="portfolio-item" onclick="openModal('modal2')">
+                <img src="https://i.pinimg.com/736x/37/27/36/3727363e05ef4bee3cbe70d8b9cace0d.jpg"
+                    alt="Proyek 2">
+                <h3>Proyek 2: "Hanya Contoh"</h3>
+                <p>Portofolio anda</p>
+            </div>
+        </div>
+
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal1')">&times;</span>
+                <h3>Detail Proyek 1</h3>
+                <p>Deskripsi lengkap, teknologi digunakan, dll.</p>
+            </div>
+        </div>
+
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal2')">&times;</span>
+                <h3>Detail Proyek 2</h3>
+                <p>Deskripsi lengkap, teknologi digunakan, dll.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Kontak</h2>
+        <form id="contact-form">
+            <input type="text" id="name" placeholder="Nama Anda" required>
+            <input type="email" id="email" placeholder="Email Anda" required>
+            <textarea id="message" placeholder="Pesan Anda" required></textarea>
+            <button type="submit">Kirim Pesan</button>
+        </form>
+        <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> brosilomiloo@websiteexample.com</p>
+            <p><i class="fas fa-phone"></i> +62 831 938 872 78</p>
+            <p><i class="fab fa-whatsapp"></i> linkedin.com/in/anda</p>
+        </div>
+    </section>
+
+        <footer>
+        <p>&copy; 2026 Brosilomilo.dibuat dengan <i class="fas fa-heart text-danger"></i></p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navUl = document.querySelector('nav ul');
+
+        hamburger.addEventListener('click', () => {
+            navUl.classList.toggle('active');
+        });
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Form validation
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !message) {
+                alert('Semua field harus diisi!');
+                return;
+            }
+            if (!/\S+@\S+\.\S+/.test(email)) {
+                alert('Email tidak valid!');
+                return;
+            }
+            alert('Pesan berhasil dikirim! (Simulasi)');
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>
